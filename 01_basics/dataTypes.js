@@ -8,7 +8,15 @@ let name = 'hello';
 let num = 3;
 let isLoggedIn = true;
 
-// number  => it has a range, if range exceeds then use bigInt
-// string  => '' or "", prefer to use ""
-// boolean => true or false
-// null    => datatype and also a standalone value 
+// primitive data types
+
+// number    => it has a range, if range exceeds then use bigInt
+// string    => '' or "", prefer to use ""
+// boolean   => true or false
+// null      => datatype and also a standalone value 
+// undefined => abhi value assign nahi huyi hain
+// symbol    => to define uniqueness 
+
+// objects
+console.log(typeof null); // type of null is object
+console.log(typeof undefined); // type of undefined is undefined
