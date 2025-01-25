@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body>
+    
+    <textarea id = 'notes'></textarea>
+    <button onclick="save()"> Save </button>
+    <button onclick="reset()"> Reset </button>
+    <div id = 'textContainer'></div>
+
+    <script>
+
+        let notes = JSON.parse(localStorage.getItem('note')) || [];
+
+        function save() {
+            const input = document.getElementById('notes').value;
+            notes.push(input)
+            localStorage.setItem('note', JSON.stringify(notes));
+            renderNotes();
+        }
+
+        function renderNotes() {
+            document.getElementById('textContainer').innerHTML = '';
+            for (let i = 0; i < notes.length; i++) {
+                const div = document.createElement('div');
+
+                div.innerHTML = `<p> ${notes[i]} </p>
+                                <button onClick = "deleteNotes(${i})"> delete </button>`;
+                document.getElementById('textContainer').appendChild(div)
+            }
+        }
+
+        function deleteNotes(index) {
+            notes.splice(index, 1);
+            localStorage.setItem('note', JSON.stringify(notes));
+            renderNotes();
+        }
+
+        renderNotes();
+
+    </script>
+
+</body>
+</html>
